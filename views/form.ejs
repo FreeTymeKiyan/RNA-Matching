@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="javascripts/validateInputs.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand">miRNA mRNA Mathcing</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <h2>miRNA mRNA Match Algorithm</h2>
+      <p>Choose input files, databases. Then get result with submission.</p>
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="input1">Select miRNA File</label>
+          <div class="col-sm-8">
+            <select class="form-control" id="input1">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="input2">Select mRNA File</label>
+          <div class="col-sm-8">
+            <select class="form-control" id="input2">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="top">Select Top Results</label>
+          <div class="col-sm-8">
+            <select class="form-control" id="top">
+              <option>50</option>
+              <option>100</option>
+              <option>150</option>
+              <option>200</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="database">Select Database (Hold Shift to Select More than 1)</label>
+          <div class="col-sm-8">
+            <select multiple class="form-control" id="database">
+              <option>All_miRNA</option>
+              <option>FGFR3_mRNA</option>
+              <option>HRAS_mRNA</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group has-feedback" id="email">
+          <label class="control-label col-sm-2" for="email">Email: </label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" id="email" placeHolder="Enter your email address">
+            <span class="glyphicon glyphicon-ok for-control-feedback" id="email"></span>
+            <span class="help-block" id="email">Please enter your email address for result.</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default" id="submit">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+<html>

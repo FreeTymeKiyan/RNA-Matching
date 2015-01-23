@@ -19,25 +19,25 @@
     <div class="container">
       <h2>miRNA mRNA Match Algorithm</h2>
       <p>Choose input files, databases. Then get result with submission.</p>
-      <form class="form-horizontal" role="form">
+      <form class="form-horizontal" role="form" action="/" method="POST">
         <div class="form-group">
           <label class="control-label col-sm-2" for="input1">Select miRNA File</label>
           <div class="col-sm-8">
-            <select class="form-control" id="input1">
+            <select class="form-control" id="input1" name="miRNA">
             </select>
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-sm-2" for="input2">Select mRNA File</label>
           <div class="col-sm-8">
-            <select class="form-control" id="input2">
+            <select class="form-control" id="input2" name="mRNA">
             </select>
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-sm-2" for="top">Select Top Results</label>
           <div class="col-sm-8">
-            <select class="form-control" id="top">
+            <select class="form-control" id="top" name="top">
               <option>50</option>
               <option>100</option>
               <option>150</option>
@@ -48,7 +48,7 @@
         <div class="form-group">
           <label class="control-label col-sm-2" for="database">Matches at least</label>
           <div class="col-sm-8">
-            <select class="form-control" id="database">
+            <select class="form-control" id="database" name="match">
               <option>1</option>
               <option>2</option>
               <option>3</option>
@@ -58,14 +58,14 @@
         <div class="form-group has-feedback" id="email">
           <label class="control-label col-sm-2" for="email">Email: </label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="email" placeHolder="Enter your email address">
+            <input type="text" class="form-control" id="email" placeHolder="Enter your email address" name="email">
             <span class="glyphicon glyphicon-ok for-control-feedback" id="email"></span>
             <span class="help-block" id="email">Please enter your email address for result.</span>
           </div>
         </div>
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default" id="submit">Submit</button>
+            <button type="submit" class="btn btn-success" id="submit">Submit</button>
           </div>
         </div>
       </form>

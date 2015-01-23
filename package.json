@@ -1,6 +1,6 @@
 {
-  "name": "learning",
-  "version": "0.0.0",
+  "name": "RNA-Matching",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"

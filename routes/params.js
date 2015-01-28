@@ -12,10 +12,11 @@ var resDir = databaseDir + '/result/';
 var targetProf1 = 'Targetprofiler_full.txt';
 var targetProf2 = 'targetscan_60_output_Redo.txt.preprocess.out.txt';
 var targetProf3 = 'v5.txt.homo_sapiens.hsa.miRanda.txt';
+var perlScript = databaseDir + '/scripts/' + 'MMiRNA-Plot_predict.pl';
 
 router.post('/', function(req, res, next) {
   console.log(req.body);
-  var cmd = 'perl ../public/database/scripts/MMiRNA-Plot.pl'
+  var cmd = 'perl ' + perlScript
     + " " + miRNADir + req.body.miRNA 
     + " " + mRNADir + req.body.mRNA 
     + " " + resDir + targetProf1

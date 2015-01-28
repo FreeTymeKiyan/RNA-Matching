@@ -25,14 +25,14 @@ router.post('/', function(req, res, next) {
     + " " + req.body.top
     + " " + req.body.match;
   console.log(cmd);
-  child = exec('ls', function (err, stdout, stderr) {
+  child = exec(cmd, function (err, stdout, stderr) {
     console.log('stdout: ' + stdout);
     console.log('stderr: ' + stderr);
     if (err !== null) {
       console.log('exec error: ' + err);
     }
-    res.send(req.body);
   });
+  res.send(req.body);
 });
 
 module.exports = router;

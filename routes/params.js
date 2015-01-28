@@ -22,7 +22,8 @@ router.post('/', function(req, res, next) {
     + " " + resDir + targetProf1
     + " " + resDir + targetProf2
     + " " + resDir + targetProf3
-    + " " + req.body.top;
+    + " " + req.body.top
+    + " " + req.body.match;
   console.log(cmd);
   child = exec('ls', function (err, stdout, stderr) {
     console.log('stdout: ' + stdout);
@@ -30,6 +31,7 @@ router.post('/', function(req, res, next) {
     if (err !== null) {
       console.log('exec error: ' + err);
     }
+    res.send(req.body);
   });
 });
 

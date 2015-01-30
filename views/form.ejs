@@ -22,6 +22,7 @@
             <label class="control-label col-sm-2" for="input1">Select miRNA File</label>
             <div class="col-sm-8">
               <select class="form-control" id="input1" name="miRNA">
+                <option value=0 checked>Choose from existed files</option>
                 <% miRna.forEach(function(file) { %>
                   <option value=<%= file.value %>><%=file.name %></option>
                 <% }); %>
@@ -32,6 +33,7 @@
             <label class="control-label col-sm-2" for="input2">Select mRNA File</label>
             <div class="col-sm-8">  
               <select class="form-control" id="input2" name="mRNA">
+                <option value=0 checked>Choose from existed files</option>
                 <% mRna.forEach(function(file) { %>
                   <option value=<%= file.value %>><%=file.name %></option>
                 <% }); %>

@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var home = require('./routes/home');
 var form = require('./routes/form');
 var params = require('./routes/params');
 
@@ -22,7 +23,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', form);
+app.use('/', home);
+app.use('/MMPlot', form);
 app.use('/params', params);
 
 // catch 404 and forward to error handler

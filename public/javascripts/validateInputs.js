@@ -10,11 +10,11 @@ $(document).ready(function () {
   });
   
   $('select#input1').on('change', function (e) {
-    console.log('select input1: ' + $(this).val());
+    if ($(this).val() == 0) console.log('choose miRNA file');
   });
   
   $('select#input2').on('change', function (e) {
-    console.log('select input2: ' + $(this).val());
+    if ($(this).val() == 0) console.log('choose miRNA file');
   });
   
   $('select#top').on('change', function (e) {

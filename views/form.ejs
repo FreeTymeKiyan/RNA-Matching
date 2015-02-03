@@ -2,10 +2,12 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="javascripts/validateInputs.js"></script>
+
   </head>
   <body>
     
@@ -17,7 +19,7 @@
       <div class="container">
         <h2>MMiRNA-plot</h2>
         <p>A simple microRNA analysis and plot tool for mRNA and microRNA datasets.</p>
-        <form class="form-horizontal" role="form" action="/params" method="POST">
+        <form class="form-horizontal" role="form" action="/params" method="POST" enctype="multipart/form-data">
           <div class="form-group">
             <label class="control-label col-sm-2" for="input1">Select miRNA File</label>
             <div class="col-sm-3">
@@ -27,6 +29,23 @@
                   <option value=<%= file.value %>><%=file.name %></option>
                 <% }); %>
               </select>
+            </div>
+            <div class="input-group">
+              <input type="text" class="form-control" readonly>
+              <span class="input-group-btn">
+                <span class="btn btn-primary btn-file">
+                  Browse...<input type="file" id="miRnaFromUsr" name="miRNAFromUser">
+                </span>
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                  <span class="caret"></span>
+                  <span class="sr-only">Toggle Dropdown</span>
+                 </button>
+                 <ul class="dropdown-menu" role="menu">
+                   <% miRna.forEach(function(file) { %>
+                     <li><a onClick='alert("<%=file.value %>")'><%=file.name %></a></li>
+                   <% }); %>
+                 </ul>
+              </span>
             </div>
           </div>
           <div class="form-group">
@@ -68,8 +87,9 @@
           <div class="form-group has-feedback" id="email">
             <label class="control-label col-sm-2" for="email">Email: </label>
             <div class="col-sm-3">
-              <input type="text" class="form-control" id="email" placeHolder="Enter your email address" name="email">
-              <span class="glyphicon glyphicon-ok for-control-feedback" id="email"></span>
+              <input type="text" class="form-control" id="email" placeHolder="Enter your email address" name="email" aria-describedby="emailCorrectStatus">
+              <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" id="email"></span>
+              <span id="emailCorrectStatus" class="sr-only">(success)</span>
               <span class="help-block" id="email">Please enter your email address for result.</span>
             </div>
           </div>

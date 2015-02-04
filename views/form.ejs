@@ -7,6 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="javascripts/validateInputs.js"></script>
+    <script type="text/javascript" src="javascripts/setInput.js"></script>
 
   </head>
   <body>
@@ -23,18 +24,19 @@
           <div class="form-group">
             <label class="control-label col-sm-2" for="input1">Select miRNA File</label>
             <div class="col-sm-4 input-group">
-              <input type="text" class="form-control" disabled id="input1" placeHolder="Browse or choose from server">
+              <input type="text" class="form-control" disabled id="input1" placeHolder="miRNA">
               <span class="input-group-btn">
                 <span class="btn btn-primary btn-file">
-                  Browse...<input type="file" id="miRnaFromUsr" name="miRNAFromUser">
+                  Upload...<input type="file" id="miRnaFromUsr" name="miRnaFromUsr" accept=".txt"/>
                 </span>
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                  Server
                   <span class="caret"></span>
                   <span class="sr-only">Toggle Dropdown</span>
                 </button>
-                <ul class="dropdown-menu" role="menu">
+                <ul class="dropdown-menu pull-right" role="menu">
                   <% miRna.forEach(function(file) { %>
-                    <li><a onClick='alert("<%=file.value %>")'><%=file.name %></a></li>
+                    <li><a onClick=""><%=file.name %></a></li>
                   <% }); %>
                 </ul>
               </span>
@@ -43,16 +45,17 @@
           <div class="form-group">
             <label class="control-label col-sm-2" for="input2">Select mRNA File</label>
             <div class="col-sm-4 input-group">
-              <input type="text" class="form-control" disabled id="input2" placeHolder="Browse or choose from server">
+              <input type="text" class="form-control" disabled id="input2" placeHolder="mRNA" required>
               <span class="input-group-btn">
                 <span class="btn btn-primary btn-file">
-                  Browse...<input type="file" id="mRnaFromUsr" name="miRNAFromUser">
+                  Upload...<input type="file" id="mRnaFromUsr" name="mRnaFromUsr" accept=".txt">
                 </span>
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                  Server
                   <span class="caret"></span>
                   <span class="sr-only">Toggle Dropdown</span>
                 </button>
-                <ul class="dropdown-menu" role="menu">
+                <ul class="dropdown-menu pull-right" role="menu">
                   <% mRna.forEach(function(file) { %>
                     <li><a onClick='alert("<%=file.value %>")'><%=file.name %></a></li>
                   <% }); %>

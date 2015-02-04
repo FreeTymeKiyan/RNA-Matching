@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var multer = require('multer');
 
 var home = require('./routes/home');
 var form = require('./routes/form');
@@ -20,6 +21,30 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(multer({ 
+  dest: '../public/tmp/', 
+  rename: function (fieldname, filename) {
+    return fieldname + filename + Date.now();
+  },
+  limits: {
+    files: 2
+  },
+  onFileUploadStart: function (file) {
+    console.log(file.fieldname + ' is starting ...');
+    if (file.originalname == 'virus.exe') return false;
+  },
+  onFileUploadData: function (file, data) {
+    console.log(data.length + ' of ' + file.fieldname + ' arrived');
+  },
+  onFileUploadComplete: function (file) {
+    console.log(file.fieldname + ' uploaded to  ' + file.path);
+    // TODO move to uploads seperately
+  },
+  onError: function (error, next) {
+    console.log(error);
+    next(error);
+  }
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 

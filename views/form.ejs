@@ -20,17 +20,18 @@
       <div class="container">
         <h2>MMiRNA-plot</h2>
         <p>A simple microRNA analysis and plot tool for mRNA and microRNA datasets.</p>
+        <hr>
         <form class="form-horizontal" role="form" action="/params" method="POST" enctype="multipart/form-data">
           <div class="form-group">
             <label class="control-label col-sm-2" for="input1">Select miRNA File</label>
-            <div class="col-sm-4 input-group">
-              <input type="text" class="form-control" disabled id="input1" placeHolder="miRNA">
+            <div class="col-sm-6 input-group">
+              <input type="text" class="form-control" id="input1" readonly="readonly" placeHolder="miRNA" name="miRna">
               <span class="input-group-btn">
                 <span class="btn btn-primary btn-file">
-                  Upload...<input type="file" id="miRnaFromUsr" name="miRnaFromUsr" accept=".txt"/>
+                  Upload...<input type="file" id="miRnaFromUsr" name="miRnaFromUsr" accept="text/plain"/>
                 </span>
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                  Server
+                  Example
                   <span class="caret"></span>
                   <span class="sr-only">Toggle Dropdown</span>
                 </button>
@@ -44,37 +45,28 @@
           </div>
           <div class="form-group">
             <label class="control-label col-sm-2" for="input2">Select mRNA File</label>
-            <div class="col-sm-4 input-group">
-              <input type="text" class="form-control" disabled id="input2" placeHolder="mRNA" required>
+            <div class="col-sm-6 input-group">
+              <input type="text" class="form-control" readonly="readonly" id="input2" placeHolder="mRNA" name="mRna">
               <span class="input-group-btn">
                 <span class="btn btn-primary btn-file">
-                  Upload...<input type="file" id="mRnaFromUsr" name="mRnaFromUsr" accept=".txt">
+                  Upload...<input type="file" id="mRnaFromUsr" name="mRnaFromUsr" accept="text/plain">
                 </span>
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                  Server
+                  Example
                   <span class="caret"></span>
                   <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <ul class="dropdown-menu pull-right" role="menu">
                   <% mRna.forEach(function(file) { %>
-                    <li><a onClick='alert("<%=file.value %>")'><%=file.name %></a></li>
+                    <li><a ='alert("<%=file.value %>")'><%=file.name %></a></li>
                   <% }); %>
                 </ul>
               </span>
             </div>
-            
-            <!-- <div class="col-sm-3">
-              <select class="form-control" id="input2" name="mRNA">
-                <option value=0 checked>Choose from existed files</option>
-                <% mRna.forEach(function(file) { %>
-                  <option value=<%= file.value %>><%=file.name %></option>
-                <% }); %>
-              </select>
-            </div> -->
           </div>
           <div class="form-group">
             <label class="control-label col-sm-2" for="top">Select Top Results</label>
-            <div class="col-sm-4">
+            <div class="col-sm-6">
               <select class="form-control" id="top" name="top">
                 <option>10</option>
                 <option>50</option>
@@ -89,7 +81,7 @@
           </div>
           <div class="form-group">
             <label class="control-label col-sm-2" for="database">Matches at least</label>
-            <div class="col-sm-4">
+            <div class="col-sm-6">
               <select class="form-control" id="database" name="match">
                 <option>1</option>
                 <option>2</option>
@@ -99,8 +91,8 @@
           </div>
           <div class="form-group has-feedback" id="email">
             <label class="control-label col-sm-2" for="email">Email: </label>
-            <div class="col-sm-4">
-              <input type="text" class="form-control" id="email" placeHolder="Enter your email address" name="email" aria-describedby="emailCorrectStatus">
+            <div class="col-sm-6">
+              <input type="email" class="form-control" id="email" placeHolder="Enter your email address" name="email" aria-describedby="emailCorrectStatus">
               <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" id="email"></span>
               <span id="emailCorrectStatus" class="sr-only">(success)</span>
               <span class="help-block" id="email">Please enter your email address for result.</span>

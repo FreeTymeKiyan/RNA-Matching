@@ -17,7 +17,7 @@ $(document).ready(function() {
     }      
   });
 
-  $('li').click(function (e) {
+  $('li.in-dropdown').click(function (e) {
     var input = $(this).parents('.input-group').find(':text');
     var log = $(this).text();
     if ( input.length ) {

@@ -21,7 +21,7 @@
         <h2>MMiRNA-plot</h2>
         <p>A simple microRNA analysis and plot tool for mRNA and microRNA datasets.</p>
         <hr>
-        <form class="form-horizontal" role="form" action="/params" method="POST" enctype="multipart/form-data">
+        <form class="form-horizontal" role="form" action="/params" method="POST" enctype="multipart/form-data" onsubmit="">
           <div class="form-group">
             <label class="control-label col-sm-2" for="input1">Select miRNA File</label>
             <div class="col-sm-6 input-group">
@@ -37,7 +37,7 @@
                 </button>
                 <ul class="dropdown-menu pull-right" role="menu">
                   <% miRna.forEach(function(file) { %>
-                    <li><a onClick=""><%=file.name %></a></li>
+                    <li class="in-dropdown"><a><%=file.name %></a></li>
                   <% }); %>
                 </ul>
               </span>
@@ -58,7 +58,7 @@
                 </button>
                 <ul class="dropdown-menu pull-right" role="menu">
                   <% mRna.forEach(function(file) { %>
-                    <li><a ='alert("<%=file.value %>")'><%=file.name %></a></li>
+                    <li class="in-dropdown"><a><%=file.name %></a></li>
                   <% }); %>
                 </ul>
               </span>

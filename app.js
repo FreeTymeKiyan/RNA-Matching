@@ -49,7 +49,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', home);
-app.use('/MMPlot', form);
+app.use('/MMiPlot', form);
 app.use('/params', params);
 
 // catch 404 and forward to error handler

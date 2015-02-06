@@ -4,8 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="javascripts/jquery-1.11.2.min.js"></script>
+    <script src="javascripts/bootstrap.min.js"></script>
     <script type="text/javascript" src="javascripts/validateInputs.js"></script>
     <script type="text/javascript" src="javascripts/setInput.js"></script>
 
@@ -21,8 +21,8 @@
         <h2>MMiRNA-plot</h2>
         <p>A simple microRNA analysis and plot tool for mRNA and microRNA datasets.</p>
         <hr>
-        <form class="form-horizontal" role="form" action="/params" method="POST" enctype="multipart/form-data" onsubmit="">
-          <div class="form-group">
+        <form class="form-horizontal" role="form" action="/params" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+          <div class="form-group" id="fg1">
             <label class="control-label col-sm-2" for="input1">Select miRNA File</label>
             <div class="col-sm-6 input-group">
               <input type="text" class="form-control" id="input1" readonly="readonly" placeHolder="miRNA" name="miRna">
@@ -43,7 +43,7 @@
               </span>
             </div>
           </div>
-          <div class="form-group">
+          <div class="form-group" id="fg2">
             <label class="control-label col-sm-2" for="input2">Select mRNA File</label>
             <div class="col-sm-6 input-group">
               <input type="text" class="form-control" readonly="readonly" id="input2" placeHolder="mRNA" name="mRna">
@@ -92,10 +92,10 @@
           <div class="form-group has-feedback" id="email">
             <label class="control-label col-sm-2" for="email">Email: </label>
             <div class="col-sm-6">
-              <input type="email" class="form-control" id="email" placeHolder="Enter your email address" name="email" aria-describedby="emailCorrectStatus">
+              <input type="email" class="form-control" id="email" placeHolder="Enter your email address" name="email">
               <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" id="email"></span>
-              <span id="emailCorrectStatus" class="sr-only">(success)</span>
               <span class="help-block" id="email">Please enter your email address for result.</span>
+              <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" id="email"></span>
             </div>
           </div>
           <div class="form-group">

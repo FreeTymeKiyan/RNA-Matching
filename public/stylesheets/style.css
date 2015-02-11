@@ -28,3 +28,16 @@ input[readonly] {
   background-color: white !important;
   cursor: text !important;
 }
+
+.logo {
+  max-width: 100px;
+  margin-top: -13px;
+}
+
+.navbar-header {
+  min-height: 80px;
+}
+
+.nav.navbar-nav {
+  margin-top: 30px;
+}

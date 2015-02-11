@@ -20,8 +20,10 @@ $(document).ready(function() {
   $('li.in-dropdown').click(function (e) {
     var input = $(this).parents('.input-group').find(':text');
     var log = $(this).text();
+    console.log(file);
     if ( input.length ) {
        input.val(log + '.txt');
+       var file = $(this).parents('.input-group').find(':file').val('');
     } else {
        if( log ) alert(log);
     }

@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var exec = require('child_process').exec;
+var mail = require('./sendEmail');
 var child;
 
 var publicDir = '../public';
@@ -16,23 +17,47 @@ var perlScript = databaseDir + '/scripts/' + 'MMiRNA-Plot_predict.pl';
 
 router.post('/', function(req, res, next) {
   console.log(req.body);
-  var cmd = 'perl ' + perlScript
-    + " " + miRNADir + req.body.miRNA 
-    + " " + mRNADir + req.body.mRNA 
-    + " " + resDir + targetProf1
-    + " " + resDir + targetProf2
-    + " " + resDir + targetProf3
-    + " " + req.body.top
-    + " " + req.body.match;
-  console.log(cmd);
-  child = exec(cmd, function (err, stdout, stderr) {
-    console.log('stdout: ' + stdout);
-    console.log('stderr: ' + stderr);
-    if (err !== null) {
-      console.log('exec error: ' + err);
+  console.log(req.files);
+  // TODO validate uploaded files, if exist
+  var miRna = miRNADir + req.body.miRna;
+  var mRna = mRNADir + req.body.mRna;
+  if (req.files) {
+    if (req.files.miRnaFromUsr) {
+      miRna = req.files.miRnaFromUsr.path; // path to the file
     }
+    if (req.files.mRnaFromUsr) {
+      mRna = req.files.mRnaFromUsr.path; // path to the file
+    }
+  }
+  var cmd = buildCmd(miRna, mRna, req);
+  console.log(cmd);
+
+  child = exec(cmd, function (err, stdout, stderr) {
+    if (stderr) {
+      console.log('stderr: ' + stderr);
+      return;
+    }
+    if (err) {
+      console.log('exec error: ' + err);
+      return;
+    }
+    console.log('Results generated stdout: ' + stdout);
+    // TODO send email with results to user
+    var opts = mail.buildAndSend(req.body.email, './');
   });
+  // TODO return user with the result
   res.send(req.body);
 });
+
+var buildCmd = function (miRna, mRna, req) {
+  return 'perl ' + perlScript
+    + ' ' + miRna
+    + ' ' + mRna
+    + ' ' + resDir + targetProf1
+    + ' ' + resDir + targetProf2
+    + ' ' + resDir + targetProf3
+    + ' ' + req.body.top
+    + ' ' + req.body.match;
+}
 
 module.exports = router;

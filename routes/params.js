@@ -16,9 +16,6 @@ var targetProf3 = 'v5.txt.homo_sapiens.hsa.miRanda.txt';
 var perlScript = databaseDir + '/scripts/' + 'MMiRNA-Plot_predict.pl';
 
 router.post('/', function(req, res, next) {
-  console.log(req.body);
-  console.log(req.files);
-  // TODO validate uploaded files, if exist
   var miRna = miRNADir + req.body.miRna;
   var mRna = mRNADir + req.body.mRna;
   if (req.files) {
@@ -30,7 +27,6 @@ router.post('/', function(req, res, next) {
     }
   }
   var cmd = buildCmd(miRna, mRna, req);
-  console.log(cmd);
 
   child = exec(cmd, function (err, stdout, stderr) {
     if (stderr) {
@@ -42,11 +38,10 @@ router.post('/', function(req, res, next) {
       return;
     }
     console.log('Results generated stdout: ' + stdout);
-    // TODO send email with results to user
     var opts = mail.buildAndSend(req.body.email, './');
   });
-  // TODO return user with the result
-  res.send(req.body);
+  // TODO a result page
+  res.render('params', { params : req.body });
 });
 
 var buildCmd = function (miRna, mRna, req) {

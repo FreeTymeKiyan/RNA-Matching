@@ -6,9 +6,12 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var multer = require('multer');
 
+// routes
 var home = require('./routes/home');
 var form = require('./routes/form');
 var params = require('./routes/params');
+var tutorial = require('./routes/tutorial');
+var about = require('./routes/about');
 
 var app = express();
 
@@ -51,6 +54,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', home);
 app.use('/MMiPlot', form);
 app.use('/params', params);
+app.use('/tutorial', tutorial);
+app.use('/about', about);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

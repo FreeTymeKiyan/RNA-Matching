@@ -1,33 +1,20 @@
 var nodemailer = require('nodemailer');
 var wellknown = require('nodemailer-wellknown');
+var directTransport = require('nodemailer-direct-transport');
 var fs = require('fs');
 
-var EMAIL_ADDR = 'freetymekiyan@foxmail.com';
-var PWD = '0Forever0'
+var EMAIL_ADDR = 'help@bioinf1.indstate.edu';
 var FILE_NAMES = ["output.txt.sorted", "output.txt.sorted.10.table.expression.txt", "output.txt.sorted.10", "Plot_chart_y2Axis.xlsx"];
 
-var transporter = nodemailer.createTransport({
-  service: 'qq',
-  auth: {
-    user: EMAIL_ADDR,
-    pass: PWD
-  }
-});
+var options = {
+  name: EMAIL_ADDR
+};
+var transporter = nodemailer.createTransport(directTransport(options));
 
 var mailOpts = {
   from: EMAIL_ADDR, 
   subject: 'Your Recent MRNA MiRNA Plot Result', 
   text: 'Hello, \n\nThe result files are in the attachment. Feel free to give us any feedback. \n\nThank you very much! \n\nBest',
-  attachments: [
-    {
-      filename: 'result1.txt',
-      content: 'result1'
-    },
-    {
-      filename: 'result2.txt',
-      path:'./output.txt'
-    }
-  ]
 };
 
 var buildAndSend = function (toEmail, directory) {

@@ -12,6 +12,7 @@ var form = require('./routes/form');
 var params = require('./routes/params');
 var tutorial = require('./routes/tutorial');
 var about = require('./routes/about');
+var download = require('./routes/download');
 
 var app = express();
 
@@ -52,10 +53,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', home);
-app.use('/MMiPlot', form);
+app.use('/mmirna-tar', form);
 app.use('/params', params);
 app.use('/tutorial', tutorial);
 app.use('/about', about);
+app.use('/download', download);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -87,6 +89,5 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-
 
 module.exports = app;

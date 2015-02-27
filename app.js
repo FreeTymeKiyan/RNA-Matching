@@ -13,6 +13,7 @@ var params = require('./routes/params');
 var tutorial = require('./routes/tutorial');
 var about = require('./routes/about');
 var download = require('./routes/download');
+var result = require('./routes/result');
 
 var app = express();
 
@@ -58,6 +59,7 @@ app.use('/params', params);
 app.use('/tutorial', tutorial);
 app.use('/about', about);
 app.use('/download', download);
+app.use('/result', result);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

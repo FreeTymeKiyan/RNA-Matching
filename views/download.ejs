@@ -6,36 +6,23 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
     <script src="javascripts/jquery-1.11.2.min.js"></script>
     <script src="javascripts/bootstrap.min.js"></script>
-    <script type="text/javascript" src="javascripts/validateInputs.js"></script>
-    <script type="text/javascript" src="javascripts/setInput.js"></script>
-
   </head>
   <body>
     
     <header>
       <% include ./partials/header %>
     </header>
-    
     <main>
       <div class="container">
+        <h2>Download</h2>
         <div class="jumbotron">
-          <h1>Your Result is On the Way!</h1>
           <p class='lead'>
-            - MiRNA file: <%=params.miRna %>
-            <br>
-            - mRNA file: <%=params.mRna %>
-            <br>
-            - <%=params.top %> top results
-            <br>
-            - Matches at least <%=params.match %> 
-            <% if (params.matches == 1) {%>
-              Database
-            <%} else {%>
-              Databases 
-            <%}%>
-            <br>
+          <% if (id == true) {%>
+          Your download will start very soon...
+          <%} else {%>
+          No correct id provided.
+          <%}%>
           </p>
-          <p class='lead'>Results will be sent to <%=params.email %> very soon.</p>
         </div>
       </div>
     </main>

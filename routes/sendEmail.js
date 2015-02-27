@@ -4,13 +4,12 @@ var directTransport = require('nodemailer-direct-transport');
 var fs = require('fs');
 
 var EMAIL_ADDR = 'help@bioinf1.indstate.edu';
-var FILE_NAMES = ["output.txt.sorted", "output.txt.sorted.10.table.expression.txt", "output.txt.sorted.10", "Plot_chart_y2Axis.xlsx"];
+var FILE_NAMES = ["sorted.output.txt", "output.txt.sorted.10.table.expression.txt", "sorted.10.output.txt", "Plot_chart_y2Axis.xlsx"];
 
 var options = {
   name: EMAIL_ADDR
 };
 var transporter = nodemailer.createTransport(directTransport(options));
-
 var mailOpts = {
   from: EMAIL_ADDR, 
   subject: 'Your Recent MRNA MiRNA Plot Result', 
@@ -33,7 +32,8 @@ var buildAndSend = function (toEmail, directory) {
     if (err) {
       console.log(err);
     } else {
-      console.log('Results sent: ' + info.response);
+      console.log('Results sent');
+      console.log(info);
     }
   });
 };

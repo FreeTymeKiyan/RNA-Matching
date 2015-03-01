@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
   else {
     var dir = '../public/downloads/' + id;
     if (fs.existsSync(dir)) {
-      res.download(dir + '/results.zip');
+      res.download(dir + '/result.zip');
     } else {
       res.render('download', { id : id, exists : false });
     }

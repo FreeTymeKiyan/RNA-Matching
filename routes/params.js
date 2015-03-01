@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var exec = require('child_process').exec;
-var mail = require('./sendEmail');
 var fs = require('fs');
-var writeZip = require('./zip').writeZip;
+
+var zipSend = require('./zip').zipSend;
 var child;
 
 var publicDir = '../public';
@@ -40,8 +40,7 @@ router.post('/', function(req, res, next) {
       return;
     }
     console.log('Results generated stdout: ' + stdout);
-    // zip to a new directory
-    writeZip();
+    zipSend(req.body.email);
   });
   // a result page
   res.render('params', { params : req.body });
@@ -59,3 +58,4 @@ var buildCmd = function (miRna, mRna, req) {
 }
 
 module.exports = router;
+

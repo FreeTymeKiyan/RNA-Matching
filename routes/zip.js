@@ -1,9 +1,10 @@
 var fs = require('fs');
 var archiver = require('archiver');
+var sendMail = require('./sendMail').sendMail;
 
 const FILE_LIST = ['output.txt', 'output.txt.sorted.10.table.expression.txt', 'Plot_chart_y2Axis.xlsx', 'sorted.10.output.txt', 'sorted.output.txt'];
 
-var writeZip = function () {
+var zipSend = function (toEmail) {
   var archive = archiver('zip'); // avoid queue close
   archive.on('error', function(err) {
     throw err;
@@ -13,10 +14,15 @@ var writeZip = function () {
   if (!fs.existsSync(path)) {
     fs.mkdirSync(path);
   }
-  var output = fs.createWriteStream(path + '/results.zip');
+  var output = fs.createWriteStream(path + '/result.zip');
   output.on('close', function() {
+    // TODO send mail using command
     console.log(archive.pointer() + ' total bytes');
     console.log('archiver has been finalized and the output file descriptor has closed.');
+    sendMail(id, toEmail);
+    // TODO put download link in page and email
+    id += 1;
+    fs.writeFileSync('id.txt', id);
   });
   
   archive.pipe(output);
@@ -24,11 +30,7 @@ var writeZip = function () {
     archive.append(fs.createReadStream(FILE_LIST[x]), { name: FILE_LIST[x] });
   }
   archive.finalize();
-  // TODO generate download link using id
-  // TODO put download link in page and email
-  // TODO send mail using command
-  id += 1;
-  fs.writeFileSync('id.txt', id);
 };
 
-exports.writeZip = writeZip;
+exports.zipSend = zipSend;
+

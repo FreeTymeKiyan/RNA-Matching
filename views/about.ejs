@@ -18,7 +18,18 @@
     <main>
       <div class="container">
         <h2>About</h2>
-        <p>Provide contact information</p>
+	<div class="box">
+	  <h3>What is MMiRNA-Tar?</h3>
+	  <p class="lead">
+	  The pipeline will take the expression information for mRNA and microRNA(timecourse or a set of samples) as input and calculate the correlation(Pearson), report target prediction results based on 3 databases(TargetProfiler, targetscan, and miRanda), and match important regions of miRNA to the mRNA. The tool also plots line charts across timecourse or samples between mRNA and microRNA data for a given list of user desired cutoff criteria(e.g. correlation cutoff value or the number of top list candidate pairs of plotting). 
+	  </p>
+	  <h3>Notes</h3>
+	  <p class="lead">
+	  1) The software takes human microRNA ID from miRBase as input, but it can be easily extended to handle other species. Pre-calculation of expression also works for species whose genome has not been characterized.
+	  <br>
+	  2) The number of compared samples or timecourse should be the same between microRNA and mRNA.
+	  </p>
+        </div>
       </div>
     </main>
     

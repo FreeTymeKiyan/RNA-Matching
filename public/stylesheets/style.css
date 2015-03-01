@@ -41,3 +41,25 @@ input[readonly] {
 .nav.navbar-nav {
   margin-top: 30px;
 }
+
+p {
+  margin: auto, auto, 1.6em, 0;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+div#footer {
+  position: absolute;
+  bottom: 0px;
+  margin: 0, auto;
+  width: 100%;
+}
+
+div.box {
+  background-color: #f4f4f4;
+  padding-left: 2em;
+  padding-top: 1.2em;
+  padding-right: 2em;
+  padding-bottom: 1.2em;
+}
+

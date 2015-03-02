@@ -40,10 +40,10 @@ router.post('/', function(req, res, next) {
       return;
     }
     console.log('Results generated stdout: ' + stdout);
-    zipSend(req.body.email);
+    zipSend(req.body.email, req.body.top);
   });
   // a result page
-  res.render('params', { params : req.body });
+  res.render('params', { params : req.body, id: id});
 });
 
 var buildCmd = function (miRna, mRna, req) {
@@ -58,4 +58,3 @@ var buildCmd = function (miRna, mRna, req) {
 }
 
 module.exports = router;
-

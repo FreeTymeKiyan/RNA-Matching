@@ -13,5 +13,5 @@ var checkResult = function (id) {
         setTimeout(checkResult(id), HALF_MIN);
       }
     }, 
-    dataType: "json");
+    "json");
 };

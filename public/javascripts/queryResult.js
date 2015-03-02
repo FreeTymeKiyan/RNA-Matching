@@ -10,10 +10,14 @@ var checkResult = function (id) {
   });
 
   request.done(function(msg) {
-    if (!msg) return;
+    if (!msg) {
+      console.log("no msg");
+      return;
+    }
     
-    if (!msg.hasGenerateed) {
-      setTimeout(request, HALF_MIN);
+    if (!msg.hasGenerated) {
+      console.log("not generated");
+      setTimeout(checkResult(id), HALF_MIN);
     }
   });
 

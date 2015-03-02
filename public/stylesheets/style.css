@@ -43,16 +43,22 @@ input[readonly] {
 }
 
 p {
-  margin: auto, auto, 1.6em, 0;
   font-size: 15px;
   line-height: 1.5;
 }
 
-div#footer {
-  position: absolute;
-  bottom: 0px;
-  margin: 0, auto;
-  width: 100%;
+body {
+  padding-bottom: 70px;
+}
+
+p#footer {
+  color: #337ab7;
+}
+
+nav#header {
+  background-color: #337ab7;
+  border-color: #337ab7;
+  border-radius: 0px;
 }
 
 div.box {
@@ -87,4 +93,13 @@ div.box {
     -webkit-transform: rotate(359deg);
     transform: rotate(359deg);
   }
+}
+
+.navbar-inverse .navbar-nav>li>a:hover {
+  border-radius: 10px;
+  background-color: #286090;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+  color: white;
 }

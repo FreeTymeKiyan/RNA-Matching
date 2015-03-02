@@ -1,7 +1,7 @@
 const HALF_MIN = 30 * 1000;
 const ADDR = "http://bioinf1.indstate.edu/result";
 
-var checkResult = function (id) {
+var check = function (id) {
   $.post(ADDR, { id : id }, 
     function (data) {
       if (!data) {
@@ -14,4 +14,8 @@ var checkResult = function (id) {
       }
     }, 
     "json");
+};
+
+var checkResult = function (id) {
+  setTimeout(check(id), HALF_MIN);
 };

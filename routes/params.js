@@ -42,7 +42,8 @@ router.post('/', function(req, res, next) {
     console.log('Results generated stdout: ' + stdout);
     zipSend(req.body.email, req.body.top);
   });
-  // a result page
+  // a result page with job id
+  var id = parseInt(fs.readFileSync('id.txt', { encoding : 'utf8'}));
   res.render('params', { params : req.body, id: id});
 });
 

@@ -14,14 +14,13 @@ var checkResult = function (id) {
       console.log("no msg");
       return;
     }
-    
     if (!msg.hasGenerated) {
       console.log("not generated");
       setTimeout(checkResult(id), HALF_MIN);
     }
   });
 
-  request.fail(function(jqXHR, textStatus) {
-    alert("Request failed to send: " + textStatus);
-  });
+  // request.fail(function(jqXHR, textStatus) {
+  //   alert("Request failed to send: " + textStatus);
+  // });
 };

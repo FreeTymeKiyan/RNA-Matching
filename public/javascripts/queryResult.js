@@ -12,8 +12,7 @@ var check = function () {
         console.log("not generated");
         setTimeout(check, HALF_MIN);
       }
-    }, 
-    "json");
+  });
 };
 
 var checkResult = function (id) {

@@ -26,7 +26,8 @@ router.post('/', function (req, res, next) {
   var id = req.body.id;
   var dir = '../public/downloads/' + id;
   if (fs.existsSync(dir)) {
-    res.render('download', { id : id , exists : true });
+    // res.render('download', { id : id , exists : true });
+    res.json({hasGenerated: true});
   } else {
     res.json({hasGenerated: false});
   }

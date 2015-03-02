@@ -1,14 +1,17 @@
 const HALF_MIN = 30 * 1000;
-const ADDR = "http://bioinf1.indstate.edu/result";
+const SERVER_ADDR = "http://bioinf1.indstate.edu/";
+const RESULT_ADDR = SERVER_ADDR + "result";
+const DOWNLOAD_ADDR = SERVER_ADDR + "download";
 
 var check = function () {
-  $.post(ADDR, { id : id }, 
+  $.post(RESULT_ADDR, { id : id }, 
     function (data) {
       if (!data) {
-        console.log("no data");
         return;
       }
-      if (!data.hasGenerated) {
+      if (data.hasGenerated) {
+        window.location.replace(DOWNLOAD_ADDR + "?sid=" + id);
+      } else {
         console.log("not generated");
         setTimeout(check, HALF_MIN);
       }

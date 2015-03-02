@@ -2,7 +2,6 @@ const HALF_MIN = 30 * 1000;
 const ADDR = "http://bioinf1.indstate.edu/result";
 
 var checkResult = function (id) {
-  console.log(id);
   var request = $.ajax({
     url: ADDR,
     type: "POST",
@@ -11,7 +10,6 @@ var checkResult = function (id) {
   });
 
   request.done(function(msg) {
-    $( "#log" ).json(msg);
     if (!msg) return;
     
     if (!msg.hasGenerateed) {

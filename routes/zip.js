@@ -3,7 +3,6 @@ var archiver = require('archiver');
 var sendMail = require('./sendMail').sendMail;
 
 var FILE_LIST = ['output.txt', 'Plot_chart_y2Axis.xlsx', 'sorted.output.txt'];
-const FILE_LIST = ['output.txt', 'output.txt.sorted.10.table.expression.txt', 'Plot_chart_y2Axis.xlsx', 'sorted.10.output.txt', 'sorted.output.txt'];
 
 var zipSend = function (toEmail, top) {
   /*generate file list according to top*/

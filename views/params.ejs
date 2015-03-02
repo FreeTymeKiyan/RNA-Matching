@@ -6,40 +6,52 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
     <script src="javascripts/jquery-1.11.2.min.js"></script>
     <script src="javascripts/bootstrap.min.js"></script>
-    <script type="text/javascript" src="javascripts/validateInputs.js"></script>
-    <script type="text/javascript" src="javascripts/setInput.js"></script>
-
+    <script src="javascripts/queryResult.js"></script>
   </head>
   <body>
-    
+
     <header>
       <% include ./partials/header %>
     </header>
-    
+
     <main>
       <div class="container">
         <div class="jumbotron">
           <h1>Your Result is On the Way!</h1>
           <p class='lead'>
+            - Job ID: <%=id%>
+            <br>
             - MiRNA file: <%=params.miRna %>
             <br>
             - mRNA file: <%=params.mRna %>
             <br>
             - <%=params.top %> top results
             <br>
-            - Matches at least <%=params.match %> 
+            - Matches at least <%=params.match %>
             <% if (params.matches == 1) {%>
               Database
             <%} else {%>
-              Databases 
+              Databases
             <%}%>
             <br>
           </p>
           <p class='lead'>Results will be sent to <%=params.email %> very soon.</p>
+          <div>
+            <p>
+              <span class="glyphicon glyphicon-refresh glyphicon-spin"></span>
+              <br>
+              You can also leave this page open. Once the result is generated the download link will appear.
+            </p>
+
+          </div>
         </div>
       </div>
+      <script>
+        var id = <%=id%>;
+        checkResult(id);
+      </script>
     </main>
-    
+
     <footer>
       <% include ./partials/footer %>
     </footer>

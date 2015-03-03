@@ -103,3 +103,7 @@ div.box {
 .navbar-inverse .navbar-nav>li>a {
   color: white;
 }
+
+.navbar.navbar-fixed-bottom {
+  background-color: white;
+}

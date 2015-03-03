@@ -1,19 +1,21 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-var fs = require('fs');
+var fs = require("fs");
+
+const DOWNLOAD_PATH = "../public/downloads/";
 
 /*
   For download
 */
-router.get('/', function(req, res, next) {
+router.get("/", function(req, res, next) {
   var id = req.query.sid;
-  if (!id) res.render('download');
+  if (!id) res.render("download");
   else {
-    var dir = '../public/downloads/' + id;
+    var dir = DOWNLOAD_PATH + id;
     if (fs.existsSync(dir)) {
-      res.download(dir + '/result.zip');
+      res.download(dir + "/result.zip");
     } else {
-      res.render('download', { id : id, exists : false });
+      res.render("download", { id : id, exists : false });
     }
   }
 });
@@ -21,9 +23,9 @@ router.get('/', function(req, res, next) {
 /*
   For check 
 */
-router.post('/', function (req, res, next) {
+router.post("/", function (req, res, next) {
   var id = req.body.id;
-  var dir = '../public/downloads/' + id;
+  var dir = DOWNLOAD_PATH + id + "/result.zip";
   if (fs.existsSync(dir)) {
     res.json({hasGenerated: true});
   } else {

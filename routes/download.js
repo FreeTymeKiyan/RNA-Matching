@@ -1,13 +1,13 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
-var path = require('path');
+
+var hashId = require("./id");
 
 router.get('/', function(req, res, next) {
   var id = req.query.sid;
-  if (!id) res.render('download', { id : 0 });
+  if (!id) res.render('download');
   else res.render('download', { id : id , exists : true });
-  // else res.download('../public/downloads/' + id + '/results.zip');
 });
 
 module.exports = router;

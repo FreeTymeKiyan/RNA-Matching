@@ -1,10 +1,11 @@
 var fs = require('fs');
 var archiver = require('archiver');
 var sendMail = require('./sendMail').sendMail;
+var hash = require("./id");
 
 var FILE_LIST = ['output.txt', 'Plot_chart_y2Axis.xlsx', 'sorted.output.txt'];
 
-var zipSend = function (toEmail, top) {
+var zipSend = function (toEmail, top, id) {
   /*generate file list according to top*/
   FILE_LIST.push("sorted." + top + ".table.expression.txt");
   FILE_LIST.push("sorted." + top + ".output.txt");
@@ -13,7 +14,6 @@ var zipSend = function (toEmail, top) {
   archive.on('error', function(err) {
     throw err;
   });
-  var id = parseInt(fs.readFileSync('id.txt', { encoding : 'utf8'}));
   var path = __dirname + '/../public/downloads/' + id;
   if (!fs.existsSync(path)) {
     fs.mkdirSync(path);
@@ -24,10 +24,8 @@ var zipSend = function (toEmail, top) {
     console.log(archive.pointer() + ' total bytes');
     console.log('archiver has been finalized and the output file descriptor has closed.');
     sendMail(id, toEmail);
-    /*
-      TODO put download link in page
-    */
     /*update session id*/
+    id = hash.decode(id);
     id += 1;
     fs.writeFileSync('id.txt', id);
   });

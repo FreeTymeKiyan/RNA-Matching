@@ -6,7 +6,7 @@ var FILE_LIST = ['output.txt', 'Plot_chart_y2Axis.xlsx', 'sorted.output.txt'];
 
 var zipSend = function (toEmail, top) {
   /*generate file list according to top*/
-  FILE_LIST.push("output.txt.sorted." + top + ".table.expression.txt");
+  FILE_LIST.push("sorted." + top + ".table.expression.txt");
   FILE_LIST.push("sorted." + top + ".output.txt");
   /*zip results to a file*/
   var archive = archiver('zip'); // avoid queue close

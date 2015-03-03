@@ -32,8 +32,9 @@ router.post("/", function(req, res, next) {
       mRna = req.files.mRnaFromUsr.path; // path to the file
     }
   }
-  var id = hash.getId(parseInt(fs.readFileSync("id.txt", { encoding : "utf8"})));
-  
+  var rawId = parseInt(fs.readFileSync("id.txt", { encoding : "utf8"}));
+  var id = hash.getId(rawId);
+  fs.writeFileSync("id.txt", rawId + 1); // update session id
   var cmd = buildCmd(miRna, mRna, req, id);
   // console.log(cmd);
   child = exec(cmd, function (err, stdout, stderr) {

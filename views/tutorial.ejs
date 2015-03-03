@@ -17,14 +17,28 @@
     </header>
     <main>
       <div class="container">
-        <h2>Get started with MMiPlot Correlation Tool</h2>
+        <h2>Get started with MMiRNA-Tar correlation tool</h2>
         <div class="box">
-          <h3>File Format</h3>
-          <p class="lead">file format definition goes here</p>
-        </div>
-        <div class="box">
-          <h3>Example File</h3>
-          <p class="lead">example file goes here</p>
+          <h3>1. Choose your input files</h3>
+          <ul style="list-style-type:disc">
+            <li><p class="lead">Input microRNA expression file (The file should contain expression data for microRNAs across samples in the tab-delimited format)</p></li>
+            <li><p class="lead">Input mRNA expression file (The file should contain expression data for mRNAs across samples in the tab-delimited format)</p></li>
+          </ul>
+          <h3>2. Enter your parameters</h3>
+          <ul style="list-style-type:disc">
+            <li><p class="lead">Total number of top pairs reported (e.g. 10): </p></li>
+            <li><p class="lead">Number of databases used to check against (e.g. 2):</p></li>
+            <li><p class="lead">E-mail address (If you enter your email here, output files will be sent to your email address as well): </p></li>
+          </ul>
+          <h3>3. Get your output files</h3>
+          <p class="lead">The program will generate 5 output files: </p>
+          <ul style="list-style-type:disc">
+            <li><p class="lead">output.txt: All combination pairs of mRNA and microRNA along with their correlation values</p></li>
+            <li><p class="lead">sorted.output.txt: All combination pairs of mRNA and microRNA along with their correlation values in sorted order (from the highest negative to the highest positive)</p></li>
+            <li><p class="lead">sorted.10.output.txt: Top 10 pairs with the highest negative correlation values</p></li>
+            <li><p class="lead">output.txt.sorted.10.table.expression.txt: Top 10 pairs with the highest negative correlation values and database prediction results. The expression values for both mRNA and microRNA across samples are also listed.</p></li>
+            <li><p class="lead">Plot_chart_y2Axis: Top pairs plotted according to user selected number of prediction databases.(Graph)</p></li>
+          </ul>
         </div>
       </div>
     </main>

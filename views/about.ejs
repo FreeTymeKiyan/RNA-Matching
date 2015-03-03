@@ -17,18 +17,21 @@
     </header>
     <main>
       <div class="container">
-        <h2>About</h2>
-	<div class="box">
-	  <h3>What is MMiRNA-Tar?</h3>
-	  <p class="lead">
-	  The pipeline will take the expression information for mRNA and microRNA(timecourse or a set of samples) as input and calculate the correlation(Pearson), report target prediction results based on 3 databases(TargetProfiler, targetscan, and miRanda), and match important regions of miRNA to the mRNA. The tool also plots line charts across timecourse or samples between mRNA and microRNA data for a given list of user desired cutoff criteria(e.g. correlation cutoff value or the number of top list candidate pairs of plotting). 
-	  </p>
-	  <h3>Notes</h3>
-	  <p class="lead">
-	  1) The software takes human microRNA ID from miRBase as input, but it can be easily extended to handle other species. Pre-calculation of expression also works for species whose genome has not been characterized.
-	  <br>
-	  2) The number of compared samples or timecourse should be the same between microRNA and mRNA.
-	  </p>
+        <h2>About <em>MMiRNA-Tar</em></h2>
+        <div class="box">
+          <h3>What is <em>MMiRNA-Tar</em>?</h3>
+          <p class="lead">
+          The pipeline takes the expression information for microRNA and mRNA (timecourse data or a set of samples) as input to calculate the correlation (Pearson), and reports target prediction results based on three databases (TargetProfiler (Oulas, et al., 2012), targetscan (Lewis, et al., 2005), and miRanda (John, et al., 2004)). The tool also generates line charts across timecourse or samples between microRNA and mRNA expression data for a list of selected microRNA-mRNA pairs. The plotted pairs are selected by users with their desired cutoff criterion (e.g. predicted by the number of databases). 
+          </p>
+          <h3>Notes</h3>
+          <ul style="list-style-type:disc">
+            <li><p class="lead">
+              Due to the size limitation of spreadsheet, the size of selected list should be smaller than 5,000.
+            </p></li>
+            <li><p class="lead">
+              The number of compared samples or timecourse data should be the same between microRNA and mRNA.
+            </li>
+          </ul>
         </div>
       </div>
     </main>

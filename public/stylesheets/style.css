@@ -107,3 +107,9 @@ div.box {
 .navbar.navbar-fixed-bottom {
   background-color: white;
 }
+
+img.screenshot {
+  max-width: 100%;
+  height: auto;
+  width: auto\9;
+}

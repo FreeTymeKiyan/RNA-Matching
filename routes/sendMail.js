@@ -6,7 +6,7 @@ var exec = require('child_process').exec;
  */
 
 var buildCommand = function(id, toEmail) {
-  return 'echo "Hi,\n\nYour recent calculation result is in the attachment. You can also download it here: http://bioinf1.indstate.edu/download?sid=' + id + ' \n\nIf you have any questions, suggestions, or to report problems, do not reply to this message, write instead to Yongsheng.Bai@indstate.edu.\n\nThank you very much for using this tool.\n\nBest regards,\nMMiRNA-Tar Team"'
+  return 'echo "Hi,\n\nYour recent calculation result is in the attachment. You can also download it here: http://bioinf1.indstate.edu/download?sid=' + id + ' \n\nIf you have any questions, suggestions, or to report problems, you may reply directly to help@bioinf1.indstate.edu. We will get in touch with you as soon as possible. \n\nThank you very much for using this tool.\n\nBest regards,\nMMiRNA-Tar Team"'
     + ' | '
     + 'mailx -s "Your Recent MMiRNA-Tar Result" -r "help@bioinf1.indstate.edu" -a '
     + "../public/downloads/" + id + "/result.zip "

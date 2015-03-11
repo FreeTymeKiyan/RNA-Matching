@@ -14,6 +14,7 @@ var tutorial = require('./routes/tutorial');
 var about = require('./routes/about');
 var download = require('./routes/download');
 var result = require('./routes/result');
+var googled = require('./routes/googled');
 
 var app = express();
 
@@ -60,6 +61,7 @@ app.use('/tutorial', tutorial);
 app.use('/about', about);
 app.use('/download', download);
 app.use('/result', result);
+app.use("/googled2c3f4ef29c5ae54.html", googled);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

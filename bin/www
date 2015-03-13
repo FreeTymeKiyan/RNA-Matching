@@ -41,7 +41,7 @@ if (cluster.isMaster) {
   server.listen(port);
   server.on("error", onError);
   server.on("listening", onListening);
-  process.on('uncaughtException', function(err){
+  process.on("uncaughtException", function(err){
     console.log(err);
     // Send some notification about the error  
     process.exit(1);

@@ -63,7 +63,10 @@ app.use('/download', download);
 app.use('/result', result);
 app.use("/googled2c3f4ef29c5ae54.html", googled);
 app.use("/RSW", function(req, res, next) {
-  res.redirect("http://bioinf1.indstate.edu:3095/RSW");   
+  res.redirect("http://bioinf1.indstate.edu:3095/RSW"); 
+});
+app.use("/RSR", function(req, res, next) {
+  res.redirect("http://bioinf1.indstate.edu:3095/RSR"); 
 });
 
 // catch 404 and forward to error handler

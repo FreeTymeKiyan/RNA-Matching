@@ -21,17 +21,17 @@
           <p class='lead'>
             - Job ID: <%=id%>
             <br>
-            - MiRNA file: <%=params.miRna %>
+            - microRNA file: <%=params.miRna %>
             <br>
             - mRNA file: <%=params.mRna %>
             <br>
-            - <%=params.top %> top results
+            - Top <%=params.top %> results
             <br>
             - Matches at least <%=params.match %>
             <% if (params.match == 1) {%>
-              Database
+              database
             <%} else {%>
-              Databases
+              databases
             <%}%>
             <br>
           </p>
@@ -39,7 +39,7 @@
           <div>
             <p>
               <span class="glyphicon glyphicon-refresh glyphicon-spin"></span>
-              You can also leave this page open. Once the result is generated the download link will appear. Please do not refresh page during this time. 
+              You can also leave this page open. Once the result is generated the download link will appear. Please DO NOT refresh the page during this time. 
             </p>
 
           </div>

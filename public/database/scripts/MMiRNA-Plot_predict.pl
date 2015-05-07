@@ -8,14 +8,13 @@ use  Excel::Writer::XLSX;
 ############## Yongsheng Bai (All rights reserved) ##############################################
 # correlation calculation method was adopted from http://davetang.org/muse/2010/11/29/calculating-pearson-correlation-using-perl/
 # Command line:
-#perl MMiRNA-Plot_predict_path.pl All_miRNA.txt FGFR3_mRNA.txt Targetprofiler_full.txt targetscan_60_output_Redo.txt.preprocess.out.txt v5.txt.homo_sapiens.hsa.miRanda.txt 10 2 /net/home/ybai/test1/test_prediction/prediction_path
+#perl MMiRNA-Plot_predict_path_complete.pl All_miRNA.txt FGFR3_mRNA.txt Targetprofiler_full.txt targetscan_60_output_Redo.txt.preprocess.out.txt v5.txt.homo_sapiens.hsa.miRanda.txt 10 2 /net/home/ybai/test1/test_prediction/prediction_path
 #################################################################################################
 
 my ($inputfile7, $inputfile6, $inputfile3, $inputfile2, $inputfile1, $toplist, $predictednum, $predictionpath) = @ARGV;
 
 `mkdir $predictionpath`;
-
-my $workbook  = Excel::Writer::XLSX->new( "$predictionpath/Plot_chart_y2Axis.xlsx" );
+my $workbook = Excel::Writer::XLSX->new("$predictionpath/Plot_chart_y2Axis.xlsx");
 
 
 my $vector = [];
@@ -158,7 +157,6 @@ while (my $line0 = <INFILE0>)
 }
 close INFILE0;
 
-
 open OUTFILE, ">$predictionpath/sorted.$toplist.table.expression.txt";
 #loop through top 100 lists
 foreach my $key0 (keys %gene0)
@@ -176,10 +174,11 @@ foreach my $key0 (keys %gene0)
 
   foreach my $key3 (keys %gene3)
   {
-    my $subSeq3 = substr($array_gene0[0],0,-1);
+    #my $subSeq3 = substr($array_gene0[0],0,-1);
     my @array_gene3 = split(/\+/, $key3);
     #miRNA similar match and gene match
-    if(($array_gene3[0] =~ m/$subSeq3/) && ($array_gene3[1] eq $array_gene0[1])) 
+    #if(($array_gene3[0] =~ m/$subSeq3/) && ($array_gene3[1] eq $array_gene0[1])) 
+    if(($array_gene3[0] eq $array_gene0[0]) && ($array_gene3[1] eq $array_gene0[1]))
     {
       print OUTFILE "targetprofiler-Yes", "\t";
       $flag_targetprofiler = $TRUE; 
@@ -194,9 +193,10 @@ foreach my $key0 (keys %gene0)
 
   foreach my $key2 (keys %gene2)
   {
-    my $subSeq2 = substr($array_gene0[0],0,-1);
+    #my $subSeq2 = substr($array_gene0[0],0,-1);
     my @array_gene2 = split(/\+/, $key2);
-    if(($array_gene2[0] =~ m/$subSeq2/) && ($array_gene2[1] eq $array_gene0[1]))
+    #if(($array_gene2[0] =~ m/$subSeq2/) && ($array_gene2[1] eq $array_gene0[1]))
+    if(($array_gene2[0] eq $array_gene0[0]) && ($array_gene2[1] eq $array_gene0[1]))
     {
       print OUTFILE "targetscan-Yes", "\t";
       $flag_targetscan = $TRUE;
@@ -211,9 +211,10 @@ foreach my $key0 (keys %gene0)
 
   foreach my $key1 (keys %gene1)
   {
-    my $subSeq1 = substr($array_gene0[0],0,-1);
+    #my $subSeq1 = substr($array_gene0[0],0,-1);
     my @array_gene1 = split(/\+/, $key1);
-    if(($array_gene1[0] =~ m/$subSeq1/) && ($array_gene1[1] eq $array_gene0[1]))
+    #if(($array_gene1[0] =~ m/$subSeq1/) && ($array_gene1[1] eq $array_gene0[1]))
+    if(($array_gene1[0] eq $array_gene0[0]) && ($array_gene1[1] eq $array_gene0[1]))
     {
       print OUTFILE "miRanda-Yes", "\t";
       $flag_miRanda = $TRUE;
@@ -292,7 +293,7 @@ foreach my $key0 (keys %gene0)
   {
     my $worksheet = $workbook->add_worksheet();
     my $chart = $workbook->add_chart( type => 'line', embedded => 1 );
-    $worksheet->insert_chart( 'A15', $chart, 1, 1);
+    $worksheet->insert_chart( 'E2', $chart, 1, 1);
 
     foreach my $finalindexGene (keys %gene_finalmiRNA) {
       if($finalindexGene eq $key0)
@@ -405,4 +406,15 @@ sub correl {
       $correl=$sign*sqrt($ssxy*$ssxy/($ssxx*$ssyy));
     }
     return $correl;
+}
+
+sub cleanID {
+    my ($sequence)=@_;
+    my $new_sequence;
+    my @array_pack = split('-', $sequence);
+    #if(($#array_apck + 1) > 3) #if there are more than two -
+     $array_pack[2] =~ s/[a-zA-Z]//g;
+     $array_pack[2] =~ s/\*//g;
+     $new_sequence = $array_pack[0]."-".$array_pack[1]."-".$array_pack[2];
+    return $new_sequence;
 }

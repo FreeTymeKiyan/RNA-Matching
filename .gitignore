@@ -1,5 +1,4 @@
 node_modules
-database
 references
 public/tmp/
 public/upload/
@@ -7,3 +6,4 @@ public/downloads/
 bin/
 !bin/www
 routes/testEmail.js
+public/database/result

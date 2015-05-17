@@ -1,0 +1,98 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.node {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+.link {
+  stroke: #999;
+  stroke-opacity: .6;
+}
+
+path.node.main {
+  fill: #3C3C3C !important;
+}
+
+path.node.fixed {
+  stroke: black !important;
+}
+
+path.node.others {
+  fill-opacity: .1 !important;
+}
+
+line.others{
+  stroke-opacity: .1 !important;
+}
+
+.normalLink.main {
+  stroke: #3C3C3C !important;
+}
+
+.tumorLink.main {
+  stroke: #3C3C3C !important;
+}
+
+iframe {
+  width: 960px;
+  height: 500px;
+  border: 1px solid #DEDEDE;
+}
+
+body.graph {
+  margin-right: 0px;
+  margin-left: 0px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  padding: 0px;
+}
+
+div.menu-bottom {
+  padding-bottom: 10px;
+}
+
+div.menu-left {
+  position: relative;
+  float: left;
+  padding: 4px 4px 0px 10px;
+  pointer-events: all;
+}
+
+div.legend {
+  position: absolute;
+  float: left;
+  margin: 10px;
+  padding: 4px 10px 4px 10px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  border-color: #ccc;
+  background-color:#fff;
+}
+
+ul {
+  display: table-cell;
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+li {
+  line-height: 25px;
+  padding: 0px;
+}
+
+svg.legend {
+  vertical-align: middle;
+  opacity: 0.6;
+}
+
+#search-bar {
+  padding-left: 10px;
+}

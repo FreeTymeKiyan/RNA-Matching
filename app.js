@@ -69,7 +69,7 @@ app.use("/RSW", function(req, res, next) {
 app.use("/RSR", function(req, res, next) {
   res.redirect("http://bioinf1.indstate.edu:3095/RSR"); 
 });
-app.use('/graph', graph);
+app.use('/mmirna-viewer', graph);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

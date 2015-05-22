@@ -27,7 +27,7 @@ var zipSend = function (toEmail, top, id) {
   });
   
   archive.pipe(output);
-  archive.directory(path);
+  archive.directory(path, false, { date: new Date() });
   archive.finalize();
 };
 

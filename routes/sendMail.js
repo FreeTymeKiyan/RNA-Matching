@@ -12,7 +12,7 @@ var buildCommand = function(id, toEmail) {
     + ' | '
     + 'mailx -s "Your Recent MMiRNA-Tar Result" -r "help@bioinf1.indstate.edu" -a '
     + "../public/downloads/" + id + "/result_" + timestamp + ".zip"
-    + toEmail;
+    + " " + toEmail;
 };
 
 var sendMail = function(id, toEmail) {

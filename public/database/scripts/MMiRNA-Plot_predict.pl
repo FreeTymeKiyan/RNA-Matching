@@ -2,6 +2,7 @@
 
 use strict;
 use warnings;
+use File::Basename;
 
 use  Excel::Writer::XLSX;
 
@@ -14,8 +15,7 @@ use  Excel::Writer::XLSX;
 my ($inputfile7, $inputfile6, $inputfile3, $inputfile2, $inputfile1, $toplist, $predictednum, $predictionpath) = @ARGV;
 
 `mkdir $predictionpath`;
-my $workbook = Excel::Writer::XLSX->new("$predictionpath/Plot_chart_y2Axis.xlsx");
-
+my $workbook  = Excel::Writer::XLSX->new( "$predictionpath/Plot_chart_y2Axis.xlsx" );
 
 my $vector = [];
 
@@ -87,7 +87,10 @@ while(my $line6 = <INFILE6>)
 }
 close(INFILE6);
 
-my $outfile7 = "output.txt";
+my $outfile7_raw = "$inputfile7.$inputfile6.top$toplist.predictedby$predictednum.output.txt";
+
+my $outfile7 = basename($outfile7_raw);
+
 open OUTFILE7, ">$predictionpath/$outfile7";
 foreach my $keymRNA6 (keys %mRNA6)
 {
@@ -106,8 +109,8 @@ foreach my $keymRNA6 (keys %mRNA6)
 }
 close(OUTFILE7);
 
-my $outfile7_sorted = `sort -k3 -n $predictionpath/$outfile7 > $predictionpath/sorted.$outfile7`;
-my $outfile7_sorted_subset = `head -$toplist $predictionpath/sorted.$outfile7 > $predictionpath/sorted.$toplist.$outfile7`;
+my $outfile7_sorted = `sort -k3 -n $predictionpath/$outfile7 > $predictionpath/$outfile7.sorted`;
+my $outfile7_sorted_subset = `head -$toplist $predictionpath/$outfile7.sorted > $predictionpath/$outfile7.sorted.$toplist`;
  
 
 #TargetProfiler
@@ -146,7 +149,7 @@ while(my $line1 = <INFILE1>)
 }
 close INFILE1;
 
-open INFILE0, "$predictionpath/sorted.$toplist.$outfile7";
+open INFILE0, "$predictionpath/$outfile7.sorted.$toplist";
 while (my $line0 = <INFILE0>)
 {
   chomp($line0);
@@ -157,7 +160,8 @@ while (my $line0 = <INFILE0>)
 }
 close INFILE0;
 
-open OUTFILE, ">$predictionpath/sorted.$toplist.table.expression.txt";
+
+open OUTFILE, ">$predictionpath/$outfile7.sorted.$toplist.table.expression.txt";
 #loop through top 100 lists
 foreach my $key0 (keys %gene0)
 {
@@ -360,7 +364,7 @@ foreach my $key0 (keys %gene0)
 }
 close(OUTFILE);
 
-#`mv Plot_chart_y2Axis.xlsx $predictionpath`;
+# `mv Plot_chart_y2Axis.xlsx $predictionpath`;
 
 sub mean {
     my ($vector)=@_;
@@ -393,7 +397,6 @@ sub correlation {
     my $ssxy=ss($vector,$mean_x,$mean_y,1,2);
     my $correl=correl($ssxx,$ssyy,$ssxy);
     return $correl;
-    
 }
 
 sub correl {

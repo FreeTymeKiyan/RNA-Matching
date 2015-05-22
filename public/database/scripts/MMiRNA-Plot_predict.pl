@@ -87,7 +87,7 @@ while(my $line6 = <INFILE6>)
 }
 close(INFILE6);
 
-my $outfile7 = "output.txt";
+my $outfile7 = "$inputfile7.$inputfile6.top$toplist.predictedby$predictednum.output.txt";
 open OUTFILE7, ">$predictionpath/$outfile7";
 foreach my $keymRNA6 (keys %mRNA6)
 {
@@ -157,7 +157,8 @@ while (my $line0 = <INFILE0>)
 }
 close INFILE0;
 
-open OUTFILE, ">$predictionpath/sorted.$toplist.table.expression.txt";
+
+open OUTFILE, ">$predictionpath/$outfile7.sorted.$toplist.table.expression.txt";
 #loop through top 100 lists
 foreach my $key0 (keys %gene0)
 {

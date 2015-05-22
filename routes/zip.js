@@ -6,7 +6,6 @@ var path = require("path");
 
 const DOWNLOAD_PATH = path.join(__dirname, "/../public/downloads/");
 
-
 var zipSend = function (toEmail, top, id) {
   /*generate file list according to top*/
   var FILE_LIST = ["output.txt", "Plot_chart_y2Axis.xlsx", "sorted.output.txt"];
@@ -21,7 +20,9 @@ var zipSend = function (toEmail, top, id) {
   if (!fs.existsSync(path)) {
     fs.mkdirSync(path);
   }
-  var output = fs.createWriteStream(path + "/result.zip");
+  var d = new Date();
+  var timestamp = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+  var output = fs.createWriteStream(path + "/result_" + timestamp + ".zip");
   output.on("close", function() { // zip is done
     /*send mail using command*/
     console.log(archive.pointer() + " total bytes");
@@ -30,9 +31,7 @@ var zipSend = function (toEmail, top, id) {
   });
   
   archive.pipe(output);
-  for (x in FILE_LIST) {
-    archive.append(fs.createReadStream(path + "/" + FILE_LIST[x]), { name: FILE_LIST[x] });
-  }
+  archive.directory(path);
   archive.finalize();
 };
 

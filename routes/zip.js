@@ -7,10 +7,6 @@ var path = require("path");
 const DOWNLOAD_PATH = path.join(__dirname, "/../public/downloads/");
 
 var zipSend = function (toEmail, top, id) {
-  /*generate file list according to top*/
-  var FILE_LIST = ["output.txt", "Plot_chart_y2Axis.xlsx", "sorted.output.txt"];
-  FILE_LIST.push("sorted." + top + ".table.expression.txt");
-  FILE_LIST.push("sorted." + top + ".output.txt");
   /*zip results to a file*/
   var archive = archiver("zip"); // avoid queue close
   archive.on("error", function(err) {

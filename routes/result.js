@@ -13,7 +13,9 @@ router.get("/", function(req, res, next) {
   else {
     var dir = DOWNLOAD_PATH + id;
     if (fs.existsSync(dir)) {
-      res.download(dir + "/result.zip");
+      var d = new Date();
+      var timestamp = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+      res.download(dir + "/result_" + timestamp + ".zip");
     } else {
       res.render("download", { id : id, exists : false });
     }
@@ -25,7 +27,9 @@ router.get("/", function(req, res, next) {
 */
 router.post("/", function (req, res, next) {
   var id = req.body.id;
-  var dir = DOWNLOAD_PATH + id + "/result.zip";
+  var d = new Date();
+  var timestamp = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+  var dir = DOWNLOAD_PATH + id + "/result_" + timestamp + ".zip";
   if (fs.existsSync(dir)) {
     res.json({hasGenerated: true});
   } else {
